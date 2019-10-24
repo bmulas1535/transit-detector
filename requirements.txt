@@ -9,7 +9,6 @@ astropy
 numpy
 scipy
 sklearn
-base64
 io
 datetime
 
