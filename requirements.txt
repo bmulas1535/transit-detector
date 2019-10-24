@@ -4,7 +4,12 @@ matplotlib
 dash
 dash-html-components
 dash-bootstrap-components
+dash-core-components
 astropy
 numpy
 scipy
 sklearn
+base64
+io
+datetime
+
