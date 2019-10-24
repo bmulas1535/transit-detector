@@ -9,6 +9,6 @@ astropy
 numpy
 scipy
 sklearn
-io
+xgboost
 datetime
 
