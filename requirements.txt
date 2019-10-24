@@ -1,0 +1,11 @@
+﻿pandas
+gunicorn
+matplotlib
+dash
+dash-html-components
+dash-bootstrap-components
+astropy
+numpy
+scipy
+sklearn
+pickle
