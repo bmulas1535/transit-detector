@@ -131,20 +131,6 @@ def parse_contents(contents, filename, date):
         plt.grid(True)
 
         curve_final = mpl_to_plotly(curve_graph)
-
-        spectrum_graph = plt.figure()
-
-        plt.plot(spec_data.iloc[0], linewidth=1.2)
-        plt.xlabel('Frequency')
-        plt.ylabel('Flucuation (normalized)')
-        plt.title('Spectrum Analysis')
-        plt.grid(True)
-
-        spectrum_final = mpl_to_plotly(spectrum_graph)
-
-
-
-
     except Exception as e:
         print(e)
         return html.Div([
@@ -162,13 +148,7 @@ def parse_contents(contents, filename, date):
                 ### This is the lightcurve:
                 """
             ),
-            dcc.Graph(id='curve-final', figure=curve_final),
-            dcc.Markdown(
-                """
-                ### This is the spectrum analysis:
-                """
-            ),
-            dcc.Graph(id='spectrum-final', figure=spectrum_final)
+            dcc.Graph(id='curve-final', figure=curve_final)
         ])
     else:
         return html.Div([
@@ -182,13 +162,7 @@ def parse_contents(contents, filename, date):
                 ### This is the lightcurve:
                 """
             ),
-            dcc.Graph(id='curve-final', figure=curve_final),
-            dcc.Markdown(
-                """
-                ### This is the spectrum analysis:
-                """
-            ),
-            dcc.Graph(id='spectrum-final', figure=spectrum_final)
+            dcc.Graph(id='curve-final', figure=curve_final)
         ])
 
 @app.callback(Output('output-data-upload', 'children'),

@@ -17,6 +17,8 @@ astropy = "*"
 numpy = "*"
 scipy = "*"
 sklearn = "*"
+xgboost = "*"
+datetime = "*"
 
 [requires]
 python_version = "3.7"
