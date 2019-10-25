@@ -44,7 +44,7 @@ column1 = dbc.Col(
 
             ###    Step 2 - Download a file
             
-            If you are using the **STSCI DATA ARCHIVE**, the process for finding a file to use is fairly straightforward. If you select any folder starting with `c_`, and follow any path through the next folderst that follow, and you will arrive at a `.fits` file! It really is that simple.
+            If you are using the **STSCI DATA ARCHIVE**, the process for finding a file to use is fairly straightforward. If you select any folder starting with `c_`, and follow any path through the folders that follow, and you will arrive at a `.fits` file! It really is that simple.
             
             If you're more experienced, and wish to collect more specific data, a brief tutorial covering how to do that will be provided in the annex at the bottom of this page.
 
@@ -54,7 +54,7 @@ column1 = dbc.Col(
 
             ###    Step 3 - Upload!
 
-            Once you have downloaded the file, you simple need to visit the [Prediction](predictions.py) page, upload the file, and wait for your result! Congratulations! The model will now generate a prediction, and supply you with the End prediction, and some brief explaination.
+            Once you have downloaded the file, head over to the [Prediction](predictions.py) page, upload the file, and wait for your result! Congratulations! The model will now generate a prediction, and supply you with the lightcurve for that data.
 
             """
         ),

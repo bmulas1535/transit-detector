@@ -148,7 +148,9 @@ def parse_contents(contents, filename, date):
                 ### This is the lightcurve:
                 """
             ),
-            dcc.Graph(id='curve-final', figure=curve_final)
+            html.Div([dcc.Graph(id='curve-final', figure=curve_final)],
+            className = "d-flex justify-content-center"
+            )
         ])
     else:
         return html.Div([
@@ -162,9 +164,11 @@ def parse_contents(contents, filename, date):
                 ### This is the lightcurve:
                 """
             ),
-            dcc.Graph(id='curve-final', figure=curve_final)
+            html.Div([dcc.Graph(id='curve-final', figure=curve_final)],
+            className = "d-flex justify-content-center"
+            )
+            
         ])
-
 @app.callback(Output('output-data-upload', 'children'),
               [Input('upload-data', 'contents')],
               [State('upload-data', 'filename'),
