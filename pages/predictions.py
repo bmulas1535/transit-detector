@@ -60,6 +60,8 @@ from sklearn.preprocessing import normalize
 import pandas as pd
 import numpy as np 
 import scipy as spy
+import matplotlib.pyplot as plt
+from plotly.tools import mpl_to_plotly
 import pickle
 
 from app import app
@@ -71,6 +73,7 @@ column = dbc.Col([
         # Make a prediction!
 
         ### Upload a ```.fits``` file to detect transit signals
+        > For best results, use a long-cadence lightcurve.
         """
     ),
     dcc.Upload(
@@ -90,6 +93,11 @@ column = dbc.Col([
             'margin':'10px'
         }
     ),
+    dcc.Markdown(
+        """
+        [How to get a fits file?](/fitshelp)
+        """
+    ),
     html.Hr(),
     html.Div(id='output-data-upload')
 ],
@@ -105,11 +113,37 @@ def parse_contents(contents, filename, date):
 
     decoded = base64.b64decode(content_string)
     try:
-        # Modified the example to integrate Brandon's code
+        # Transform the raw fits data
         df = fits_convert(io.BytesIO(decoded))
         spec_data = transform_new(df)
+        # Feed into model -> Get prediction!
         model = pickle.load(open('./assets/final_model.sav', 'rb'))
         prediction = model.predict_proba(spec_data)
+
+        # Lightcurve Graph
+        curve_graph = plt.figure()
+        
+        plt.scatter(range(df.shape[1]), df, s=1.5, marker='o', color='teal', alpha=0.7)
+        plt.xticks([0, 500, 1000, 1500, 2000, 2500, 3000])
+        plt.xlabel('Observations')
+        plt.ylabel('Luminosity')
+        plt.title('Lightcurve')
+        plt.grid(True)
+
+        curve_final = mpl_to_plotly(curve_graph)
+
+        spectrum_graph = plt.figure()
+
+        plt.plot(spec_data.iloc[0], linewidth=1.2)
+        plt.xlabel('Frequency')
+        plt.ylabel('Flucuation (normalized)')
+        plt.title('Spectrum Analysis')
+        plt.grid(True)
+
+        spectrum_final = mpl_to_plotly(spectrum_graph)
+
+
+
 
     except Exception as e:
         print(e)
@@ -122,7 +156,19 @@ def parse_contents(contents, filename, date):
             html.H2('Good candidate for transits!',
             style = {
                 'color':'green'
-            })
+            }),
+            dcc.Markdown(
+                """
+                ### This is the lightcurve:
+                """
+            ),
+            dcc.Graph(id='curve-final', figure=curve_final),
+            dcc.Markdown(
+                """
+                ### This is the spectrum analysis:
+                """
+            ),
+            dcc.Graph(id='spectrum-final', figure=spectrum_final)
         ])
     else:
         return html.Div([
@@ -130,7 +176,19 @@ def parse_contents(contents, filename, date):
             html.H2('No Transits.',
             style = {
                 'color':'red'
-            })
+            }),
+            dcc.Markdown(
+                """
+                ### This is the lightcurve:
+                """
+            ),
+            dcc.Graph(id='curve-final', figure=curve_final),
+            dcc.Markdown(
+                """
+                ### This is the spectrum analysis:
+                """
+            ),
+            dcc.Graph(id='spectrum-final', figure=spectrum_final)
         ])
 
 @app.callback(Output('output-data-upload', 'children'),

@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+
+[packages]
+pandas = "*"
+gunicorn = "*"
+matplotlib = "*"
+dash = "*"
+dash-html-components = "*"
+dash-bootstrap-components = "*"
+astropy = "*"
+numpy = "*"
+scipy = "*"
+sklearn = "*"
+
+[requires]
+python_version = "3.7"

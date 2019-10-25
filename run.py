@@ -7,7 +7,7 @@ from dash.dependencies import Input, Output
 
 # Imports from this application
 from app import app, server
-from pages import index, predictions, insights, process
+from pages import index, predictions, insights, process, fitshelp
 
 """
 https://dash-bootstrap-components.opensource.faculty.ai/l/components/navbar
@@ -26,7 +26,7 @@ sticky (string, optional): Stick the navbar to the top or the bottom of the view
 """
 
 navbar = dbc.NavbarSimple(
-    brand='Exo-planet Hunting',
+    brand='Transit Detector',
     brand_href='/', 
     children=[
         dbc.NavItem(dcc.Link('Predictions', href='/predictions', className='nav-link')), 
@@ -34,9 +34,9 @@ navbar = dbc.NavbarSimple(
         dbc.NavItem(dcc.Link('Process', href='/process', className='nav-link')), 
     ],
     sticky='top',
-    color='light', 
-    light=True, 
-    dark=False
+    color='dark', 
+    light=False, 
+    dark=True
 )
 
 footer = dbc.Container(
@@ -79,6 +79,8 @@ def display_page(pathname):
         return insights.layout
     elif pathname == '/process':
         return process.layout
+    elif pathname == '/fitshelp':
+        return fitshelp.layout
     else:
         return dcc.Markdown('## Page not found')
 
