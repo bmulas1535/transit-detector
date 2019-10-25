@@ -73,7 +73,7 @@ column = dbc.Col([
         # Make a prediction!
 
         ### Upload a ```.fits``` file to detect transit signals
-        > For best results, use a long-cadence lightcurve.
+        > For best results, use a long-cadence lightcurve, like [this one](assets/ktwo201092629-c102_llc.fits)
         """
     ),
     dcc.Upload(
