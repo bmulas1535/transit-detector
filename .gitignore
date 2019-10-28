@@ -1,0 +1,8 @@
+#vscode settings
+.vscode/*
+
+#jupyter notebook checkpoints
+.ipynb_checkpoints/*
+
+#pycache
+__pycache__
