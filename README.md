@@ -13,3 +13,5 @@ classification algorithm to detect probability of a transit. Currently, the mode
 * 0% FN
 
 This is achieved by using a modified threshold for positive class prediction. More details can be found inside the model file.
+---------------------
+These are the files for the exoplanet transit-detector hosted [here](https://transit-detection.herokuapp.com)
