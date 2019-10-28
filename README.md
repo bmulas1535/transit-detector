@@ -1,6 +1,6 @@
 # Exoplanet Transit Detector!
 
-![lc](assets/ex-transit.svg)
+![lc](assets/header.png)
 
 ### Details
 
