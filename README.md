@@ -1,4 +1,4 @@
-# Exoplanet Transit Detector.
+# Exoplanet Transit Detector
 
 ![lc](assets/header.png)
 
