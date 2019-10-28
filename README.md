@@ -12,6 +12,9 @@ classification algorithm to detect probability of a transit. Currently, the mode
 * 10.4% FP
 * 0% FN
 
-This is achieved by using a modified threshold for positive class prediction. More details can be found inside the model file.
+### Model
+
+Currently, the model used to classify exo-planet transits in this app is the XGBoost Classifier. This model was chosen due to the need for recursive building of new trees with prior knowledge. Because the data contains so few positive classes, the few positives that do exist were oversampled, and the model is used specifically to identify **non-transit** systems, with a positive class indicated by just 1% probability of a transit.
+
 ---------------------
-These are the files for the exoplanet transit-detector hosted [here](https://transit-detection.herokuapp.com)
+The app is hosted [here](https://transit-detection.herokuapp.com)
