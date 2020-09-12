@@ -1,5 +1,4 @@
 ﻿pandas
-gunicorn
 matplotlib
 dash
 dash-html-components
@@ -8,7 +7,6 @@ dash-core-components
 astropy
 numpy
 scipy
-sklearn
+scikit-learn
 xgboost
 datetime
-
